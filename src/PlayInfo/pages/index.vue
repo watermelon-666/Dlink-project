@@ -8,22 +8,21 @@ import PlayAudio from "../components/play-audio.vue";
         infoTitleFlag: 'hotspot', // 默认第一个为“热点”
         contentList: [
           {
-            title: '测试音频1',
-            src: '播放地址1'
+            title: '热点测试音频1',
+            src: 'src/PlayInfo/audio1.mp3'
           },
           {
-            title: '测试音频2',
-            src: '播放地址2'
+            title: '热点测试音频2',
+            src: 'src/PlayInfo/audio2.mp3'
           }
-        ], // 播放列表
+        ], // 播放列表（默认为热点数据）
+        audioSrc: '', // 播放地址
+        activ: '' // 选择具体的哪一项
       }
     },
   
     mounted () {
-      this.contentList.push({
-        title: '测试音频3',
-        src: '播放地址3'
-      })
+
     },
 
     methods: {
@@ -32,22 +31,87 @@ import PlayAudio from "../components/play-audio.vue";
       // 点击热点
       hotspot () {
         this.infoTitleFlag = 'hotspot'
+        this.contentList = [
+          {
+            title: '热点测试音频1',
+            src: 'src/PlayInfo/audio1.mp3'
+          },
+          {
+            title: '热点测试音频2',
+            src: 'src/PlayInfo/audio2.mp3'
+          }
+        ]
+        this.audioSrc = ''
+        this.activ = ''
       },
       // 点击理财
       finance () {
         this.infoTitleFlag = 'finance'
+        this.contentList = [
+          {
+            title: '理财测试音频1',
+            src: 'src/PlayInfo/audio1.mp3'
+          },
+          {
+            title: '理财测试音频2',
+            src: 'src/PlayInfo/audio2.mp3'
+          }
+        ]
+        this.audioSrc = ''
+        this.activ = ''
       },
       // 点击跨境
       abroad () {
         this.infoTitleFlag = 'abroad'
+        this.contentList = [
+          {
+            title: '跨境测试音频1',
+            src: 'src/PlayInfo/audio1.mp3'
+          },
+          {
+            title: '跨境测试音频2',
+            src: 'src/PlayInfo/audio2.mp3'
+          }
+        ]
+        this.audioSrc = ''
+        this.activ = ''
       },
       // 点击基金
       fund () {
         this.infoTitleFlag = 'fund'
+        this.contentList = [
+          {
+            title: '基金测试音频1',
+            src: 'src/PlayInfo/audio1.mp3'
+          },
+          {
+            title: '基金测试音频2',
+            src: 'src/PlayInfo/audio2.mp3'
+          }
+        ]
+        this.audioSrc = ''
+        this.activ = ''
       },
       // 点击股市
       stock () {
         this.infoTitleFlag = 'stock'
+        this.contentList = [
+          {
+            title: '股市测试音频1',
+            src: 'src/PlayInfo/audio1.mp3'
+          },
+          {
+            title: '股市测试音频2',
+            src: 'src/PlayInfo/audio2.mp3'
+          }
+        ]
+        this.audioSrc = ''
+        this.activ = ''
+      },
+      // 选择音频
+      chooseAudio (item, index) {
+        this.audioSrc = item.src
+        this.activ = index
       }
     }
   }
@@ -70,7 +134,7 @@ import PlayAudio from "../components/play-audio.vue";
           <!-- 此处应为海报/广告链接 先以黑色矩形块替代 -->
           <div style="height: 346px;width: 614px;background: #000;" />
         </div>
-        <play-audio style="margin-top: 53px;" audioSrc="src/PlayInfo/audio1.mp3" />
+        <play-audio style="margin-top: 53px;" :audioSrc="audioSrc" />
       </div>
 
       <div class="play-info">
@@ -83,9 +147,9 @@ import PlayAudio from "../components/play-audio.vue";
           <div class="relay"><img style="width: 26px;height: 26px;" src="../images/relay.png"></div>
           <div class="switch"><img style="width: 25px;height: 26px;" src="../images/switch.png"></div>
         </div>
-        <div class="info-content" v-for="item in contentList">
+        <div class="info-content" v-for="(item,index) in contentList" :key="index">
           <div class="icon-normal"><img style="width: 41px;height: 41px;" src="../images/bofang01.png"></div>
-          <div class="content-title">{{item.title}}</div>
+          <div class="content-title" :class="index === activ ? 'title-highlight' : ''" @click="chooseAudio(item, index)">{{item.title}}</div>
           <div>4:20</div>
         </div>
       </div>
@@ -124,6 +188,7 @@ import PlayAudio from "../components/play-audio.vue";
     letter-spacing: 7.35px;
     font-weight: 400;
     margin: 38px 108px;
+    z-index: 1;
   }
 
   .title-download {
@@ -139,6 +204,7 @@ import PlayAudio from "../components/play-audio.vue";
     border-radius: 144px;
     text-align: center;
     margin: 38px 0 38px 980px;
+    z-index: 1;
   }
 
   .page-content {
@@ -223,6 +289,10 @@ import PlayAudio from "../components/play-audio.vue";
 
   .content-title {
     width: 771px;
+  }
+
+  .title-highlight {
+    color: #EC5036;
   }
 
 </style>
