@@ -83,6 +83,7 @@
       // 当指定的音频/视频的元数据已加载时，会发生 loadedmetadata 事件。
       onLoadedmetadata(res) {
         console.log("loadedmetadata数据已加载时")
+        this.audio.playing = false
         this.audio.maxTime = parseInt(res.target.duration)
       },
       // 当音频当前时间改变后，进度条也要改变

@@ -4,25 +4,24 @@ import PlayAudio from "../components/play-audio.vue";
     mixins: [],
     components: {PlayAudio},
     data () {
+      let List = [
+        {
+          title: '热点测试音频1',
+          src: 'src/PlayInfo/audio1.mp3',
+          maxTime: '05:15'
+        },
+        {
+          title: '热点测试音频2',
+          src: 'src/PlayInfo/audio2.mp3',
+          maxTime: '01:34'
+        }
+      ]
       return {
         infoTitleFlag: 'hotspot', // 默认第一个为“热点”
-        contentList: [
-          {
-            title: '热点测试音频1',
-            src: 'src/PlayInfo/audio1.mp3'
-          },
-          {
-            title: '热点测试音频2',
-            src: 'src/PlayInfo/audio2.mp3'
-          }
-        ], // 播放列表（默认为热点数据）
-        audioSrc: '', // 播放地址
-        activ: '' // 选择具体的哪一项
+        contentList: List, // 播放列表（默认为热点数据）
+        audioSrc: List[0].src, // 播放地址（默认为热点数据第一条）
+        activ: 0 // 选择具体的哪一项
       }
-    },
-  
-    mounted () {
-
     },
 
     methods: {
@@ -34,15 +33,18 @@ import PlayAudio from "../components/play-audio.vue";
         this.contentList = [
           {
             title: '热点测试音频1',
-            src: 'src/PlayInfo/audio1.mp3'
+            src: 'src/PlayInfo/audio1.mp3',
+            maxTime: '05:15'
           },
           {
             title: '热点测试音频2',
-            src: 'src/PlayInfo/audio2.mp3'
+            src: 'src/PlayInfo/audio2.mp3',
+            maxTime: '01:34'
           }
         ]
-        this.audioSrc = ''
-        this.activ = ''
+        // 重置地址与高亮显示
+        this.audioSrc = this.contentList[0].src
+        this.activ = 0
       },
       // 点击理财
       finance () {
@@ -50,15 +52,17 @@ import PlayAudio from "../components/play-audio.vue";
         this.contentList = [
           {
             title: '理财测试音频1',
-            src: 'src/PlayInfo/audio1.mp3'
+            src: 'src/PlayInfo/audio1.mp3',
+            maxTime: '05:15'
           },
           {
             title: '理财测试音频2',
-            src: 'src/PlayInfo/audio2.mp3'
+            src: 'src/PlayInfo/audio2.mp3',
+            maxTime: '01:34'
           }
         ]
-        this.audioSrc = ''
-        this.activ = ''
+        this.audioSrc = this.contentList[0].src
+        this.activ = 0
       },
       // 点击跨境
       abroad () {
@@ -66,15 +70,17 @@ import PlayAudio from "../components/play-audio.vue";
         this.contentList = [
           {
             title: '跨境测试音频1',
-            src: 'src/PlayInfo/audio1.mp3'
+            src: 'src/PlayInfo/audio1.mp3',
+            maxTime: '05:15'
           },
           {
             title: '跨境测试音频2',
-            src: 'src/PlayInfo/audio2.mp3'
+            src: 'src/PlayInfo/audio2.mp3',
+            maxTime: '01:34'
           }
         ]
-        this.audioSrc = ''
-        this.activ = ''
+        this.audioSrc = this.contentList[0].src
+        this.activ = 0
       },
       // 点击基金
       fund () {
@@ -82,15 +88,17 @@ import PlayAudio from "../components/play-audio.vue";
         this.contentList = [
           {
             title: '基金测试音频1',
-            src: 'src/PlayInfo/audio1.mp3'
+            src: 'src/PlayInfo/audio1.mp3',
+            maxTime: '05:15'
           },
           {
             title: '基金测试音频2',
-            src: 'src/PlayInfo/audio2.mp3'
+            src: 'src/PlayInfo/audio2.mp3',
+            maxTime: '01:34'
           }
         ]
-        this.audioSrc = ''
-        this.activ = ''
+        this.audioSrc = this.contentList[0].src
+        this.activ = 0
       },
       // 点击股市
       stock () {
@@ -98,15 +106,17 @@ import PlayAudio from "../components/play-audio.vue";
         this.contentList = [
           {
             title: '股市测试音频1',
-            src: 'src/PlayInfo/audio1.mp3'
+            src: 'src/PlayInfo/audio1.mp3',
+            maxTime: '05:15'
           },
           {
             title: '股市测试音频2',
-            src: 'src/PlayInfo/audio2.mp3'
+            src: 'src/PlayInfo/audio2.mp3',
+            maxTime: '01:34'
           }
         ]
-        this.audioSrc = ''
-        this.activ = ''
+        this.audioSrc = this.contentList[0].src
+        this.activ = 0
       },
       // 选择音频
       chooseAudio (item, index) {
@@ -150,7 +160,7 @@ import PlayAudio from "../components/play-audio.vue";
         <div class="info-content" v-for="(item,index) in contentList" :key="index">
           <div class="icon-normal"><img style="width: 41px;height: 41px;" src="../images/bofang01.png"></div>
           <div class="content-title" :class="index === activ ? 'title-highlight' : ''" @click="chooseAudio(item, index)">{{item.title}}</div>
-          <div>4:20</div>
+          <div>{{item.maxTime}}</div>
         </div>
       </div>
     </div>
