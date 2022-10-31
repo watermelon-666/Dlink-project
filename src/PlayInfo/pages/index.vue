@@ -8,11 +8,13 @@ import PlayAudio from "../components/play-audio.vue";
         {
           title: '热点测试音频1',
           src: 'src/PlayInfo/audio1.mp3',
+          adSrc: 'src/PlayInfo/images/inset1.png',
           maxTime: '05:15'
         },
         {
           title: '热点测试音频2',
           src: 'src/PlayInfo/audio2.mp3',
+          adSrc: 'src/PlayInfo/images/inset2.png',
           maxTime: '01:34'
         }
       ]
@@ -20,6 +22,7 @@ import PlayAudio from "../components/play-audio.vue";
         infoTitleFlag: 'hotspot', // 默认第一个为“热点”
         contentList: List, // 播放列表（默认为热点数据）
         audioSrc: List[0].src, // 播放地址（默认为热点数据第一条）
+        adSrc: List[0].adSrc, // 播放图片地址
         activ: 0 // 选择具体的哪一项
       }
     },
@@ -34,16 +37,19 @@ import PlayAudio from "../components/play-audio.vue";
           {
             title: '热点测试音频1',
             src: 'src/PlayInfo/audio1.mp3',
+            adSrc: 'src/PlayInfo/images/inset1.png',
             maxTime: '05:15'
           },
           {
             title: '热点测试音频2',
             src: 'src/PlayInfo/audio2.mp3',
+            adSrc: 'src/PlayInfo/images/inset2.png',
             maxTime: '01:34'
           }
         ]
         // 重置地址与高亮显示
         this.audioSrc = this.contentList[0].src
+        this.adSrc = this.contentList[0].adSrc
         this.activ = 0
       },
       // 点击理财
@@ -52,16 +58,19 @@ import PlayAudio from "../components/play-audio.vue";
         this.contentList = [
           {
             title: '理财测试音频1',
-            src: 'src/PlayInfo/audio1.mp3',
-            maxTime: '05:15'
+            src: 'src/PlayInfo/audio2.mp3',
+            adSrc: 'src/PlayInfo/images/inset2.png',
+            maxTime: '01:34'
           },
           {
             title: '理财测试音频2',
-            src: 'src/PlayInfo/audio2.mp3',
-            maxTime: '01:34'
+            src: 'src/PlayInfo/audio1.mp3',
+            adSrc: 'src/PlayInfo/images/inset1.png',
+            maxTime: '05:15'
           }
         ]
         this.audioSrc = this.contentList[0].src
+        this.adSrc = this.contentList[0].adSrc
         this.activ = 0
       },
       // 点击跨境
@@ -71,15 +80,18 @@ import PlayAudio from "../components/play-audio.vue";
           {
             title: '跨境测试音频1',
             src: 'src/PlayInfo/audio1.mp3',
+            adSrc: 'src/PlayInfo/images/inset1.png',
             maxTime: '05:15'
           },
           {
             title: '跨境测试音频2',
             src: 'src/PlayInfo/audio2.mp3',
+            adSrc: 'src/PlayInfo/images/inset2.png',
             maxTime: '01:34'
           }
         ]
         this.audioSrc = this.contentList[0].src
+        this.adSrc = this.contentList[0].adSrc
         this.activ = 0
       },
       // 点击基金
@@ -88,16 +100,19 @@ import PlayAudio from "../components/play-audio.vue";
         this.contentList = [
           {
             title: '基金测试音频1',
-            src: 'src/PlayInfo/audio1.mp3',
-            maxTime: '05:15'
+            src: 'src/PlayInfo/audio2.mp3',
+            adSrc: 'src/PlayInfo/images/inset2.png',
+            maxTime: '01:34'
           },
           {
             title: '基金测试音频2',
-            src: 'src/PlayInfo/audio2.mp3',
-            maxTime: '01:34'
+            src: 'src/PlayInfo/audio1.mp3',
+            adSrc: 'src/PlayInfo/images/inset1.png',
+            maxTime: '05:15'
           }
         ]
         this.audioSrc = this.contentList[0].src
+        this.adSrc = this.contentList[0].adSrc
         this.activ = 0
       },
       // 点击股市
@@ -107,20 +122,24 @@ import PlayAudio from "../components/play-audio.vue";
           {
             title: '股市测试音频1',
             src: 'src/PlayInfo/audio1.mp3',
+            adSrc: 'src/PlayInfo/images/inset1.png',
             maxTime: '05:15'
           },
           {
             title: '股市测试音频2',
             src: 'src/PlayInfo/audio2.mp3',
+            adSrc: 'src/PlayInfo/images/inset2.png',
             maxTime: '01:34'
           }
         ]
         this.audioSrc = this.contentList[0].src
+        this.adSrc = this.contentList[0].adSrc
         this.activ = 0
       },
       // 选择音频
       chooseAudio (item, index) {
         this.audioSrc = item.src
+        this.adSrc = item.adSrc
         this.activ = index
       }
     }
@@ -142,7 +161,7 @@ import PlayAudio from "../components/play-audio.vue";
         <!-- 播放海报/广告处 -->
         <div class="panel-poster">
           <!-- 此处应为海报/广告链接 先以黑色矩形块替代 -->
-          <div style="height: 346px;width: 614px;background: #000;" />
+          <img style="height: 346px;width: 614px;" :src="adSrc" />
         </div>
         <play-audio style="margin-top: 53px;" :audioSrc="audioSrc" />
       </div>
@@ -160,7 +179,7 @@ import PlayAudio from "../components/play-audio.vue";
         <div class="info-content" v-for="(item,index) in contentList" :key="index">
           <div class="icon-normal"><img style="width: 41px;height: 41px;" src="../images/bofang01.png"></div>
           <div class="content-title" :class="index === activ ? 'title-highlight' : ''" @click="chooseAudio(item, index)">{{item.title}}</div>
-          <div>{{item.maxTime}}</div>
+          <div class="content-time">{{item.maxTime}}</div>
         </div>
       </div>
     </div>
@@ -176,12 +195,12 @@ import PlayAudio from "../components/play-audio.vue";
   }
 
   .page-title {
-    /* height: 126px; */
-    /* position: relative; */
+    /* 待定 */
+    height: 226px;
   }
 
   .background {
-    height: 223px;
+    height: 100%;
     width: 100%;
     position: absolute;
     top: 0;
@@ -189,8 +208,10 @@ import PlayAudio from "../components/play-audio.vue";
 
   .page-title .content {
     display: flex;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
     z-index: 1;
-    /* position: absolute; */
   }
 
   .title-text {
@@ -200,8 +221,7 @@ import PlayAudio from "../components/play-audio.vue";
     color: #F9F9F9;
     letter-spacing: 7.35px;
     font-weight: 400;
-    margin: 38px 108px;
-    /* z-index: 1; */
+    margin: 0 108px;
   }
 
   .title-download {
@@ -216,8 +236,7 @@ import PlayAudio from "../components/play-audio.vue";
     border: 2px solid #F9F9F9;;
     border-radius: 144px;
     text-align: center;
-    margin: 38px 0 38px 980px;
-    /* z-index: 1; */
+    margin: 0 108px;
   }
 
   .page-content {
@@ -258,7 +277,8 @@ import PlayAudio from "../components/play-audio.vue";
     text-align: center;
     font-weight: 400;
     display: flex;
-    margin: 72px 117px 32px 55px;
+    margin: 72px 0 32px 55px;
+    justify-content: space-evenly;
   }
 
   .info-title>div{
@@ -304,6 +324,11 @@ import PlayAudio from "../components/play-audio.vue";
 
   .content-title {
     width: 771px;
+  }
+
+  .content-time {
+    margin-left: auto;
+    margin-right: 32px;
   }
 
   .title-highlight {
