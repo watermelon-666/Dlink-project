@@ -176,18 +176,21 @@ import PlayAudio from "../components/play-audio.vue";
   }
 
   .page-title {
-    height: 126px;
-    position: relative;
+    /* height: 126px; */
+    /* position: relative; */
   }
 
   .background {
-    height: 126px;
+    height: 223px;
     width: 100%;
+    position: absolute;
+    top: 0;
   }
 
   .page-title .content {
     display: flex;
-    position: absolute;
+    z-index: 1;
+    /* position: absolute; */
   }
 
   .title-text {
@@ -198,7 +201,7 @@ import PlayAudio from "../components/play-audio.vue";
     letter-spacing: 7.35px;
     font-weight: 400;
     margin: 38px 108px;
-    z-index: 1;
+    /* z-index: 1; */
   }
 
   .title-download {
@@ -214,7 +217,7 @@ import PlayAudio from "../components/play-audio.vue";
     border-radius: 144px;
     text-align: center;
     margin: 38px 0 38px 980px;
-    z-index: 1;
+    /* z-index: 1; */
   }
 
   .page-content {
@@ -222,13 +225,15 @@ import PlayAudio from "../components/play-audio.vue";
   }
 
   .play-panel {
-    height: 762px;
-    width: 830px;
+    /* height: 762px; */
+    width: 44%;
     background: #F9F9F9;
   }
 
   .panel-poster {
-    margin: 72px 108px 0 108px;
+    display: flex;
+    justify-content: center;
+    padding-top: 72px;
   }
 
   .audio-icon {
@@ -239,8 +244,8 @@ import PlayAudio from "../components/play-audio.vue";
   }
 
   .play-info {
-    height: 762px;
-    width: 1090px;
+    /* height: 762px; */
+    width: 56%;
     background: #FFF;
   }
 

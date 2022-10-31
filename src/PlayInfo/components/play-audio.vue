@@ -15,7 +15,7 @@
     </div>
     <!-- 播放时间 -->
     <div class="play_time">
-      <span style="margin-right: 410px">{{realFormatSecond(audio.currentTime)}}</span>
+      <span>{{realFormatSecond(audio.currentTime)}}</span>
       <span>{{realFormatSecond(audio.maxTime)}}</span>
     </div>
     <!-- 播放按钮 -->
@@ -140,12 +140,12 @@
 
 <style scoped>
   .p_slider {
-    width: 578px;
+    width: 70%;
     position: relative;
     height: 24px;
     display: flex;
     align-items: center;
-    margin: 0 126px
+    margin-left: 15%;
   }
   .p_slider_track {
     position: absolute;
@@ -180,7 +180,11 @@
   }
 
   .play_time {
-    margin: 30px 126px 0px 126px;
+    /* margin: 30px 126px 0px 126px; */
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30px;
+    margin: 0 12%;
     font-size: 32px;
     color: #111111;
     font-weight: 400;
