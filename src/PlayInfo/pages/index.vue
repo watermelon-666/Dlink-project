@@ -372,11 +372,12 @@ import PlayAudio from "../components/play-audio.vue";
   .footer-content {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     width: 40%;
   }
 
   .temperature {
-    font-size: 32px;
+    font-size: 42px;
     color: #7F7F80;
   }
 
