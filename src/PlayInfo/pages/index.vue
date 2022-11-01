@@ -183,6 +183,23 @@ import PlayAudio from "../components/play-audio.vue";
         </div>
       </div>
     </div>
+    <div class="page-footer">
+      <div class="footer-left">
+        <img src="../images/home.png" />
+      </div>
+      <div class="footer-content">
+        <img src="../images/carCycle.png" />
+        <img src="../images/seatLeft.png" />
+        <div class="temperature">24.5°</div>
+        <img src="../images/fan.png" />
+        <div class="temperature">24.5°</div>
+        <img src="../images/seatRight.png" />
+        <img src="../images/hvac.png" />
+      </div>
+      <div class="footer-right">
+        <img src="../images/voice.png" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -241,6 +258,7 @@ import PlayAudio from "../components/play-audio.vue";
 
   .page-content {
     display: flex;
+    height: 857px;
   }
 
   .play-panel {
@@ -333,6 +351,37 @@ import PlayAudio from "../components/play-audio.vue";
 
   .title-highlight {
     color: #EC5036;
+  }
+
+  .page-footer {
+    width: 100%;
+    height: 96px;
+    background-color: #E8E8E8;
+    border-top: 1px solid #9C9C9C;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-left {
+    margin-left: 50px;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-evenly;
+    width: 40%;
+  }
+
+  .temperature {
+    font-size: 32px;
+    color: #7F7F80;
+  }
+
+  .footer-right {
+    margin-right: 50px;
   }
 
 </style>
